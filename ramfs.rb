@@ -11,4 +11,14 @@ class Ramfs < Formula
     bin.install "ramfs"
   end
 
+  test do
+    # test script output
+    assert_equal %x('#{bin}/ramfs'), "ramfs  --unmount <path>
+ramfs  --size <size> [--name <label>] [--filesystem <format>] [--mount <path>]
+      [--allow-suid] [--enable-owners]
+        'size' may be expressed in IEC units, e.g. 512M, 2G, etc.
+        'path' will be created if it does not exist, but should be empty
+      To view the available filesystem formats, use 'format' "help""
+  end
+
 end
